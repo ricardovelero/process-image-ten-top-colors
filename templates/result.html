@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Image Upload Result</title>
+    </head>
+    <body>
+        <h1>Top 10 Most Used Colors</h1>
+        <h2>Uploaded Image:</h2>
+        <img
+            src="{{ url_for('static', filename='uploads/' + image_filename) }}"
+            alt="Uploaded Image" />
+        <table>
+            <tr>
+                <th>Color</th>
+                <th>Count</th>
+            </tr>
+            {% for color, count in colors %}
+            <tr>
+                <td
+                    style="background-color: rgb({{ color[0] }}, {{ color[1] }}, {{ color[2] }});"></td>
+                <td>{{ count }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+
+        <a href="{{ url_for('home') }}">Go back to upload a new image</a>
+    </body>
+</html>
